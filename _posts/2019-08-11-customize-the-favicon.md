@@ -35,3 +35,11 @@ The following table will help you understand the changes to the favicon files:
 {: .prompt-info }
 
 The next time you build the site, the favicon will be replaced with a customized edition.
+
+<script src="https://utteranc.es/client.js"
+        repo="RumosZin/rumoszin.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
