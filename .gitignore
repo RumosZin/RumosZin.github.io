@@ -22,3 +22,9 @@ package-lock.json
 # assets/js/dist  ### 주석 처리
 .DS_Store
 pages-deploy.yml
+
+# 기본 파일들 업로드에서 제거하기
+2019-08-08-text-and-typography.md
+2019-08-08-write-a-new-post.md
+2019-08-09-getting-started.md
+2019-08-11-customize-the-favicon.md
