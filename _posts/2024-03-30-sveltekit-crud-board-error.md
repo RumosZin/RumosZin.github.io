@@ -6,7 +6,7 @@ categories: [SvelteKit, User Management with Supabase]
 tags: [SvelteKit, Web]
 ---
 
-## Build a User Management App with SvelteKit를 시작한 이유
+## **Build a User Management App with SvelteKit를 시작한 이유**
 
 SvelteKit은 Svelte를 사용하여 웹 애플리케이션을 구축하기 위한 Javascript 기반 프레임워크이다. 인턴십에서 다뤄야 할 프레임워크였기 때문에, 공부하게 되었다.
 
@@ -20,7 +20,7 @@ SvelteKit은 Svelte를 사용하여 웹 애플리케이션을 구축하기 위�
 
 공식 문서를 참고한 결과, 결론은 **공식 문서에 나오는대로 해서는 User management 애플리케이션을 만들 수 없다**는 것이다. **따라서 나만의 방식으로 User management 애플리케이션을 만들고 공유하려 한다!**
 
-## 문제 상황
+## **문제 상황**
 
 Issues에 나온 문제가 아닌, 직접 겪은 문제만 먼저 정리한다. 위에 적은 공식 문서, Full code를 직접 해본 결과 만난 문제이다.
 
@@ -36,11 +36,11 @@ Issues에 나온 문제가 아닌, 직접 겪은 문제만 먼저 정리한다. 
 
 `src/routes/account/+page.svelte`의 `import { enhance, type SubmitFunction } from '$app/forms'`에서 SubmitFunction에 대해 parse-error가 발생한다.
 
-## 해결 시도
+## **해결 시도**
 
 reddit에서 [정확히 같은 문제를 겪고 있는 글](https://www.reddit.com/r/Supabase/comments/155jeim/having_trouble_with_the_usermanagement_tutorial/)을 찾았다. 참고해서 두 가지 시도를 했지만 에러는 그대로였다.
 
-### 시도 1 : TypeScript compilerOption 수정
+### **시도 1 : TypeScript compilerOption 수정**
 
 공식 문서에 다음과 같은 글이 있다.
 
@@ -64,7 +64,7 @@ reddit에서 [정확히 같은 문제를 겪고 있는 글](https://www.reddit.c
 ```
 {: file='tsconfig.json'}
 
-### 시도 2 : SubmitFunction import 수정
+### **시도 2 : SubmitFunction import 수정**
 
 문제가 생긴 import 문은 다음과 같다.
 ```svelte
@@ -79,7 +79,7 @@ import type { SubmitFunction } from '@sveltejs/kit';
  ```
  {: file='/account/+page.svelte'}
 
-### 시도 3 : SvelteKit 공식 문서 확인
+### **시도 3 : SvelteKit 공식 문서 확인**
 
 `$app/forms`에 `SubmitFunction` 자체가 없는 것 같아 [SvelteKit 공식 문서](https://kit.svelte.dev/docs/modules#$app-forms)를 확인했다. 확인 결과 `$app/forms`에는 `applyAction`, `deserialize`, `enhance`만 존재한다. 
 
@@ -87,13 +87,13 @@ SvelteKit 공식 문서에 `SubmitFunction`을 검색한 결과, `use:enhance`�
 
 결론적으로 [User management App with SvelteKit 공식 문서](https://supabase.com/docs/guides/getting-started/tutorials/with-sveltekit)에서 다루고 있는 코드와, SvelteKit 공식 문서에 나오는 방법이 다르다. 뿐만 아니라, [튜토리얼 Full code](https://github.com/supabase/supabase/tree/master/examples/user-management/sveltekit-user-management)와도 달랐다. Full code에는 없는 폴더 `schema`에서 `Database`를 import 하는 부분도 존재한다.
 
-## Issues 확인
+## **Issues 확인**
 
 이런 문제에 대해서 분명 Issue가 존재할 것이라고 생각했다. 확인 결과 내가 겪었던 문제들을 포함해 더 많은 오류를 찾아낸 사람이 [Issue](https://github.com/supabase/supabase/issues/17375)를 올렸다. [연결된 Pull Request](https://github.com/supabase/supabase/pull/17376)가 있어서 해결 방법을 찾을 수 있다고 생각했지만, 어떤 이유인지 Closed 상태였다.
 
 결론적으로, [Build a User Management App with SvelteKit](https://supabase.com/docs/guides/getting-started/tutorials/with-sveltekit)를 그대로 따라하면 원하는 결과를 얻을 수 없다. 
 
-## 앞으로
+## **앞으로**
 
 가능한 방법을 찾아서 간단한 User Management를 구현한 후 오픈소스 커뮤니티에 공유할 예정이다. 회원가입/로그인을 구현하다가 지쳐 포기하는 일이 줄어들었으면 한다.
 
