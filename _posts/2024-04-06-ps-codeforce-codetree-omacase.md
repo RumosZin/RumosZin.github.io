@@ -1,5 +1,5 @@
 ---
-title: 삼성 - 코드트리 오마카세
+title: 삼성SW역량테스트 - 코드트리 오마카세
 author: 
 date: 2024-04-06 14:28:00 +0900
 categories: [Problem Solving, Code Force]
