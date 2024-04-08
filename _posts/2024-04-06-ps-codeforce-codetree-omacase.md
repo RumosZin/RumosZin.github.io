@@ -1,14 +1,14 @@
 ---
-title: 삼성SW역량테스트 - 코드트리 오마카세
+title: \[코드포스/C++] 코드트리 오마카세
 author: 
 date: 2024-04-06 14:28:00 +0900
 categories: [Problem Solving, Code Force]
-tags: [Problem Solving, C++]
+tags: [Problem Solving, C++, 시뮬레이션]
 ---
 
 ## **문제**
 
-[삼성 SW 역량테스트 2023 하반기 오후 2번 문제 : 코드트리 오마카세](https://www.codetree.ai/training-field/frequent-problems/problems/codetree-omakase/description?page=1&pageSize=20)
+[[코드포스/C++] 코드트리 오마카세 (삼성 SW 역량테스트 2023 하반기 오후 2번 문제)](https://www.codetree.ai/training-field/frequent-problems/problems/codetree-omakase/description?page=1&pageSize=20)
 
 ## **문제 해석**
 
@@ -229,4 +229,4 @@ bool cmp(Query q1, Query q2) {
 
 ## **전체 코드**
 
-[[CodeForce/Samsung] 코드포스 오마카세](https://github.com/RumosZin/algorithm-study/blob/main/CodeForce/Samsung_codetree_omacase.cpp)
+[[코드포스/C++] 코드트리 오마카세 / 풀이 코드](https://github.com/RumosZin/algorithm-study/blob/main/CodeForce/Samsung_codetree_omacase.cpp)
