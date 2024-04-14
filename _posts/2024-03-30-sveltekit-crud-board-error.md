@@ -28,7 +28,7 @@ Issues에 나온 문제가 아닌, 직접 겪은 문제만 먼저 정리한다. 
 
 공식 문서를 따라하고 Full code를 참고해서 `npm run dev`로 실행한다. `localhost:5173` 으로 접근하면 아래와 같은 결과가 나온다.
 
-![magic link를 입력하는 home 화면](/assets/img/posts/240330-1.png){: width="100%"}
+![magic link를 입력하는 home 화면](/assets/img/240330-1.png){: width="100%"}
 
 이메일 주소를 입력하고 `SEND MAGIC LINK` 버튼을 누르면 입력한 이메일 주소로 인증이 가능하다. 회원가입을 따로 구현하지 않아도, 이 magic link 인증을 통해 회원가입을 할 수 있다. 로그인 할 때 이 이메일 주소를 이용하면 된다.
 
