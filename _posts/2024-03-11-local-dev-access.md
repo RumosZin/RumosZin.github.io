@@ -2,7 +2,7 @@
 title: \[Tips] 로컬 컴퓨터에서 원격 서버 접속하기 (feat. key-gen 에러)
 author: 
 date: 2024-03-11 13:30:00 +0900
-categories: [Tips, Server]
+categories: [Server, Tips]
 tags: [Tips]
 ---
 
@@ -57,7 +57,7 @@ Last login: Mon Mar 11 11:04:26 2024 from gimyunjcbookpro
 ```
 
 
-## **key-gen 오류**
+### **key-gen 오류**
 
 `ssh dev_server`로 `192.168.@@.@@`에 접속했는데, 원격 서버를 **centOS**에서 **rocky-linux**로 변경한 후 아래와 같은 오류가 발생하며 한 번에 접속할 수 없었다.
 
@@ -78,7 +78,7 @@ Host key for 192.168.@@.@@ has changed and you have requested strict checking.
 Host key verification failed.
 ```
 
-## **해결 방법**
+### **해결 방법**
 
 - `ssh-keygen -R {host IP}` 로 기존의 key를 삭제한다.
     - ex) `ssh-keygen -R 192.168.1.121`
