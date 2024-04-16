@@ -419,7 +419,7 @@ yunjinserver   1/1     Running   0          55m
 
 디플로이먼트 설정이 담긴 템플릿(YAML 파일)로 컨테이너를 실행해보는 실습을 준비했다. 이 포스트의 내용, 교재의 3장 내용이 충분히 이해됐다면 실습은 어렵지 않을 것이다.
 
-// 링크
+[Deployment 설정이 담긴 템플릿으로 컨테이너 실행하기 실습](https://github.com/RumosZin/k8s-start-with-container-practice)
 
 ## **3.3 클러스터 외부에서 클러스터 안 앱에 접근하기**
 
@@ -486,3 +486,9 @@ yunjinserver   1/1     Running   0          81m
 $ kubectl get deployments
 No resources found in default namespace.
 ```
+
+### **이미지 출처**
+
+- https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/
+- https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/
+- https://yankeexe.medium.com/how-rolling-and-rollback-deployments-work-in-kubernetes-8db4c4dce599
