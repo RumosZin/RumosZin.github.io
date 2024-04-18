@@ -83,3 +83,11 @@ Host key verification failed.
 - `ssh-keygen -R {host IP}` 로 기존의 key를 삭제한다.
     - ex) `ssh-keygen -R 192.168.1.121`
 - `ssh dev_centos`로 다시 접속하고 connecting 질문에 `yes` 입력하면 정상적으로 접속할 수 있다.
+
+<script src="https://utteranc.es/client.js"
+        repo="RumosZin/rumoszin.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>

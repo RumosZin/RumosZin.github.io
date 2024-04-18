@@ -87,3 +87,11 @@ exec /usr/local/bin/docker-entrypoint.sh: exec format error
 ✅ Docker 이미지를 운영체제/CPU에 맞게 받았는지 확인한다. `docker-compose.yml`에 이미지를 지정했다면, `platform`을 설정해 본인의 개발 환경에 맞는 이미지를 받아야 한다.
 
 `192.168.@@.@@` (개발 서버)의 플랫폼 설정은 `linux/amd64`이고, macOS apple chip인 로컬의 플랫폼 설정은 `linux/arm64`이다!
+
+<script src="https://utteranc.es/client.js"
+        repo="RumosZin/rumoszin.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>

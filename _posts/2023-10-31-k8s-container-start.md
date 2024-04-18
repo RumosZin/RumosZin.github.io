@@ -492,3 +492,11 @@ No resources found in default namespace.
 - https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/
 - https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/
 - https://yankeexe.medium.com/how-rolling-and-rollback-deployments-work-in-kubernetes-8db4c4dce599
+
+<script src="https://utteranc.es/client.js"
+        repo="RumosZin/rumoszin.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
