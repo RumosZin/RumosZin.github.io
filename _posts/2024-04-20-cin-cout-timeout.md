@@ -28,3 +28,9 @@ C++에서 사용하는 `#include <iostream>`과 C에서 사용하는 `#include <
 ### **"\n"으로 개행 사용**
 
 `cout`에서 `endl`은 개행 문자를 출력하면서 출력 버퍼를 비우기 때문에 속도가 느리다. `"\n"`으로 개행을 처리해야 한다.
+
+### **참고 자료**
+
+- [https://wondangcom.tistory.com/631](https://wondangcom.tistory.com/631)
+- [https://algospot.com/forum/read/2496/](https://algospot.com/forum/read/2496/)
+- [https://wondangcom.tistory.com/631](https://wondangcom.tistory.com/631)
