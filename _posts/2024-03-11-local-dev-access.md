@@ -2,7 +2,7 @@
 title: "[Tips] 로컬 컴퓨터에서 원격 서버 접속하기 (feat. key-gen 에러)"
 author: 
 date: 2024-03-11 13:30:00 +0900
-categories: [Server, Tips]
+categories: [Server, Server-Tips]
 tags: [Tips]
 ---
 
