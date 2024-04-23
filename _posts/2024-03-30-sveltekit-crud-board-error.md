@@ -1,5 +1,5 @@
 ---
-title: \[SvelteKit/Supabase] Build a User Management App with SvelteKit 공식 문서의 오류
+title: "[SvelteKit/Supabase] Build a User Management App with SvelteKit 공식 문서의 오류"
 author: 
 date: 2024-03-30 22:17:00 +0900
 categories: [SvelteKit, User Management with Supabase]

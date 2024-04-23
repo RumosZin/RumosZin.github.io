@@ -1,5 +1,5 @@
 ---
-title: \[C++] cin, cout 시간 초과 해결 방법
+title: "[C++] cin, cout 시간 초과 해결 방법"
 author: 
 date: 2024-04-20 18:28:00 +0900
 categories: [Problem Solving, C++]
@@ -34,3 +34,11 @@ C++에서 사용하는 `#include <iostream>`과 C에서 사용하는 `#include <
 - [https://wondangcom.tistory.com/631](https://wondangcom.tistory.com/631)
 - [https://algospot.com/forum/read/2496/](https://algospot.com/forum/read/2496/)
 - [https://wondangcom.tistory.com/631](https://wondangcom.tistory.com/631)
+
+<script src="https://utteranc.es/client.js"
+        repo="RumosZin/rumoszin.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
