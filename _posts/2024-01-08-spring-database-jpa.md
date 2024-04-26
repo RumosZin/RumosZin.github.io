@@ -14,6 +14,10 @@ Spring에서 데이터베이스에 접근하는 방식들을 알아본다. ORM �
 
 #2 [[Spring/Database] JDBC와 JDBCTemplate](https://rumoszin.github.io/posts/spring-database-jdbc-template/)
 
+#3 ✅ [[Spring/Database] Spring JPA와 Spring Data JPA](https://rumoszin.github.io/posts/spring-database-jpa/)
+
+#4 [전체 코드 저장소 : Various way of Spring Database Access](https://github.com/RumosZin/spring-various-db-access)
+
 <br>
 
 ## **데이터베이스 접근 : Spring JPA**
