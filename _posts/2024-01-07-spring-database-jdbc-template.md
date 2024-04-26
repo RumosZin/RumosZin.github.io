@@ -10,7 +10,11 @@ tags: [Spring, Database]
 
 Spring에서 데이터베이스에 접근하는 방식들을 알아본다. ORM 이전의 접근 방법들과 단점을 알아보고, 이를 보완하기 위해 등장한 ORM의 개념과 Spring에서 사용하는 Java ORM 기술을 알아본다.
 
-[[Database] ORM 정의, 등장 배경, 장단점](https://rumoszin.github.io/posts/database-orm/)
+#1 [[Database] ORM 정의, 등장 배경, 장단점](https://rumoszin.github.io/posts/database-orm/)
+
+#2 [[Spring/Database] JDBC와 JDBCTemplate](https://rumoszin.github.io/posts/spring-database-jdbc-template/)
+
+<br>
 
 ## **데이터베이스 접근 : JDBC**
 
