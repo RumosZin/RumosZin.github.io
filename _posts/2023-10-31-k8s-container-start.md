@@ -429,7 +429,7 @@ yunjinserver   1/1     Running   0          55m
 
 - YAML 파일을 저장한 경로에서 수행한다. nginx-app-deployment-perfect라는 서비스가 생성되어 있다.
 
-- 쿠버네티스 내부의 `80`번 포트가 `31756`라는 외부 포트와 연결되어 있고, Endpoint를 보면 서비스에 컨테이너 2개가 연결되어 있다.
+- 쿠버네티스 내부의 `80`번 포트가 `30804`라는 외부 포트와 연결되어 있고, Endpoint를 보면 서비스에 컨테이너 2개가 연결되어 있다.
 
 ```shell
 $ kubectl expose deployment nginx-app-deployment-perfect  --type=NodePort
@@ -439,7 +439,7 @@ $ kubectl get service
 NAME                           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 echoserver                     NodePort    10.109.240.33    <none>        8080:31163/TCP   56m
 kubernetes                     ClusterIP   10.96.0.1        <none>        443/TCP          26d
-nginx-app-deployment-perfect   NodePort    10.96.155.121    <none>        **80:31756/TCP**     17s
+nginx-app-deployment-perfect   NodePort    10.96.155.121    <none>        **80:30804/TCP**     17s
 yunjinserver                   NodePort    10.102.144.249   <none>        8080:32174/TCP   55m
 
 $ kubectl describe service nginx-app-deployment-perfect
@@ -456,7 +456,7 @@ IPs:                      10.96.155.121
 LoadBalancer Ingress:     localhost
 Port:                     <unset>  80/TCP
 TargetPort:               80/TCP
-NodePort:                 <unset>  31756/TCP
+NodePort:                 <unset>  30804/TCP
 **Endpoints:                10.1.0.59:80,10.1.0.60:80**
 Session Affinity:         None
 External Traffic Policy:  Cluster
@@ -465,7 +465,7 @@ Events:                   <none>
 
 <br>
 
-`localhost:31756`로 접속하면 nginx의 기본 페이지를 확인할 수 있고, 이 화면을 만나면 클러스터 안의 앱에 접근한 것이다.
+`localhost:30804`로 접속하면 nginx의 기본 페이지를 확인할 수 있고, 이 화면을 만나면 클러스터 안의 앱에 접근한 것이다.
 
 ![Untitled](/assets/img/231031-7.png){: width="100%"}
 
@@ -489,9 +489,9 @@ No resources found in default namespace.
 
 ### **이미지 출처**
 
-- https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/
-- https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/
-- https://yankeexe.medium.com/how-rolling-and-rollback-deployments-work-in-kubernetes-8db4c4dce599
+- [https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/)
+- [https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/)
+- [https://yankeexe.medium.com/how-rolling-and-rollback-deployments-work-in-kubernetes-8db4c4dce599](https://yankeexe.medium.com/how-rolling-and-rollback-deployments-work-in-kubernetes-8db4c4dce599)
 
 <script src="https://utteranc.es/client.js"
         repo="RumosZin/rumoszin.github.io"
