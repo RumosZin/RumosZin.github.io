@@ -2,8 +2,8 @@
 title: "[Spring/Database] Spring JPA와 Spring Data JPA"
 author: 
 date: 2024-01-08 23:30:00 +0900
-categories: [Spring, Database]
-tags: [Spring, Database]
+categories: [Spring, DB]
+tags: [Spring, Database, ORM]
 ---
 
 ## **Spring Database 접근 방식**

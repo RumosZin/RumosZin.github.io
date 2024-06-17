@@ -2,8 +2,8 @@
 title: "[Spring/Database] JDBC와 JDBCTemplate"
 author: 
 date: 2024-01-07 22:19:00 +0900
-categories: [Spring, Database]
-tags: [Spring, Database]
+categories: [Spring, DB]
+tags: [Spring, Database, ORM]
 ---
 
 ## **Spring Database 접근 방식**
