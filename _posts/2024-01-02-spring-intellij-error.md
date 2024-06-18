@@ -1,8 +1,8 @@
 ---
-title: "[Spring/IntelliJ] IntelliJ 오류와 해결 방법.zip"
+title: "[Tips] IntelliJ 오류와 해결 방법.zip"
 author: 
 date: 2024-01-02 23:03:00 +0900
-categories: [Spring, IntelliJ]
+categories: [Spring, Spring-Tips]
 tags: [Tips, IntelliJ]
 ---
 

@@ -2,8 +2,8 @@
 title: "[Database] ORM 정의, 등장 배경, 장단점"
 author: 
 date: 2024-01-06 20:12:00 +0900
-categories: [Database, ORM]
-tags: [Database, ORM]
+categories: [Spring, DB]
+tags: [Database, DB]
 ---
 
 ## **ORM이란?**
