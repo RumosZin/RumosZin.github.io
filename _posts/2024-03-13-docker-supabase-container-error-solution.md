@@ -1,5 +1,5 @@
 ---
-title: "Supabase docker 컨테이너 password 에러 (feat. `.env`)"
+title: "Supabase 컨테이너 password 에러 : `.env` 확인하기"
 author: 
 date: 2024-03-11 13:30:00 +0900
 categories: [Database, Supabase]
