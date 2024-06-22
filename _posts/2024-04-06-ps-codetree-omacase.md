@@ -1,5 +1,5 @@
 ---
-title: "[코드트리/C++] 코드트리 오마카세"
+title: "[CodeTree/C++] 코드트리 오마카세"
 author: 
 date: 2024-04-06 14:28:00 +0900
 categories: [Problem Solving, Solving]

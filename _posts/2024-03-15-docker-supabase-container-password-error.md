@@ -1,5 +1,5 @@
 ---
-title: "Supabase 컨테이너 password 에러 : password 변경하기"
+title: "[Supabase/Docker] Supabase 컨테이너 password 에러 : password 변경하기"
 author: 
 date: 2024-03-11 13:30:00 +0900
 categories: [Database, Supabase]

@@ -1,5 +1,5 @@
 ---
-title: "SvelteKit application을 docker로 빌드하기"
+title: "[SvelteKit/Docker] SvelteKit application을 docker로 빌드하기"
 author: 
 date: 2024-03-20 20:30:00 +0900
 categories: [SvelteKit, Docker]
