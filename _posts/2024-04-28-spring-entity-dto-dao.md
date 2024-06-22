@@ -1,12 +1,14 @@
 ---
-title: "[Spring] Entity, DTO, DAO"
+title: "[Spring] Entity, DTO, DAO (feat. 관심사의 분리)"
 author: 
 date: 2024-04-28 21:28:00 +0900
 categories: [Spring, 개발, 리팩토링 준비]
 tags: [Spring]
 ---
 
-✅ [🏝️ Fairy-Tale Island 🏝️](https://github.com/GDSC-CAU/FTIsland-BE) 기획을 2023년 12월 말부터 2024년 1월 중순까지 하고, 2024년 2월에 부랴부랴 개발하느라 디테일한 부분들을 모르고 넘어갔다... 개발하면서도 부족함을 느꼈는데, 인턴십을 하면서 부족함을 많이 느끼게 되어서 내 코드를 두고 볼 수 없었다. 성공적인 리팩토링을 위해서, Entity, DAO, DTO, VO에 대해 알아보자.
+✅ [🏝️ Fairy-Tale Island 🏝️](https://github.com/GDSC-CAU/FTIsland-BE) 리팩토링!
+
+기획을 2023년 12월 말부터 2024년 1월 중순까지 하고, 2024년 2월에 부랴부랴 개발하느라 디테일한 부분들을 모르고 넘어갔다... 개발하면서도 부족함을 느꼈는데, 인턴십을 하면서 **관심사의 분리**의 중요성을 크게 느껴 내 코드를 두고 볼 수 없었다. 성공적인 리팩토링을 위해서, Entity, DAO, DTO, VO에 대해 알아보자.
 
 ## **Entity란?**
 
@@ -105,7 +107,7 @@ public interface UserVocaRepository extends JpaRepository<UserVocaEntity, Intege
 
 ## **프로젝트 패키지 구조**
 
-✅ 이번 주제를 다루면서, 우리 코드를 다시 한 번 살펴봤는데, 관심사의 분리(Seperation of Concern), 의존성(Dependency)에 대해 고민하면서 코드를 고치면 좋을 것 같다는 생각을 하게 되었다.
+✅ 이번 주제를 다루면서, 우리 코드를 다시 한 번 살펴봤는데, 관심사의 분리(Seperation of Concern), 의존성(Dependency)에 대해 고민하면서 코드를 고치면 좋을 것 같다는 생각을 하게 되었다. 패키지 구조도 관심사의 분리 측면에서 개선하면 좋을 것 같다.
 
 ✅ 이 과정에서 프로젝트 구조부터 고쳐야 하는지?를 고민했는데, [인프런에서 프로젝트 패키지 구조에 대해 영한님이 답변하신 것](https://www.inflearn.com/questions/16046/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0%EC%99%80-%EA%B0%95%EC%9D%98-%EC%9D%BC%EC%A0%95%EC%97%90-%EA%B4%80%ED%95%98%EC%97%AC-%EC%A7%88%EB%AC%B8%EC%9D%B4-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)을 보니, 우리의 현재 상황을 정확히 인식하고 구조를 설정하는 것이 좋을 듯 하다!
 
