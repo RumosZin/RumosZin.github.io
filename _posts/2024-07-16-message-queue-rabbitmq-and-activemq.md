@@ -3,7 +3,7 @@ title: "[메시지 큐] RabbitMQ, ActiveMQ"
 author:
 date: 2024-07-16 22:30:00 +0900
 categories: [CS, 운영체제]
-tags: [CS, 운영체제, 메시지 전달, 메시지 큐]
+tags: [CS, 운영체제, 메시지 전달, 메시지 큐, 푸앙이사진관]
 ---
 
 ## **메시지 지향 미들웨어(MOM)**
