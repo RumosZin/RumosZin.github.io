@@ -1,12 +1,12 @@
 ---
 title: "[Kubernetes] 데이터 저장"
-author: 
+author:
 date: 2023-11-07 11:30:00 +0900
-categories: [Kubernetes, 쿠버네티스 입문:90가지 예제로 배우는 컨테이너 관리 자동화 표준]
+categories: [Google Developer Student Club, 쿠버네티스 스터디]
 tags: [Kubernetes]
 ---
 
-**[쿠버네티스 입문:90가지 예제로 배우는 컨테이너 관리 자동화 표준]** 책의 14장 데이터 저장 단원을 공부하고 실습한 내용을 담은 글입니다. Window10 운영체제에서 실습을 진행했습니다. 
+**[쿠버네티스 입문:90가지 예제로 배우는 컨테이너 관리 자동화 표준]** 책의 14장 데이터 저장 단원을 공부하고 실습한 내용을 담은 글입니다. Window10 운영체제에서 실습을 진행했습니다.
 
 ## **데이터 저장 단원 공부의 필요성**
 
@@ -34,16 +34,16 @@ Docker 컨테이너를 띄워서 작업을 하는데, 컨테이너 안에 저장
 ## **쿠버네티스의 볼륨 플러그인**
 
 1. aws, azure, gce
-    - 클라우드 서비스에서 제공하는 볼륨 서비스
+   - 클라우드 서비스에서 제공하는 볼륨 서비스
 2. glusterfs, cephfs
-    - 오픈소스로 공개된 스토리지 서비스
+   - 오픈소스로 공개된 스토리지 서비스
 3. 컨피그맵, 시크릿
-    - 쿠버네티스 내부 오브젝트
+   - 쿠버네티스 내부 오브젝트
 4. emptyDir, hostPath, local
-    - 컨테이너가 실행된 노드의 디스크를 볼륨으로 사용하는 옵션
+   - 컨테이너가 실행된 노드의 디스크를 볼륨으로 사용하는 옵션
 5. nfs 볼륨 플러그인
-    - 하나의 컨테이너에 볼륨을 붙여서 NFS 서버로 설정하고, 다른 컨테이너에서 NFS 서버 컨테이너를 가져다가 사용하도록 설정 가능
-    - 볼륨에서 직접적으로 멀티 읽기/쓰기를 지원하지 않더라도 그와 비슷한 효과를 내는 것도 가능
+   - 하나의 컨테이너에 볼륨을 붙여서 NFS 서버로 설정하고, 다른 컨테이너에서 NFS 서버 컨테이너를 가져다가 사용하도록 설정 가능
+   - 볼륨에서 직접적으로 멀티 읽기/쓰기를 지원하지 않더라도 그와 비슷한 효과를 내는 것도 가능
 
 ## **볼륨 관련 필드**
 
@@ -82,37 +82,38 @@ metadata:
   name: kubernetes-emptydir-pod
 spec:
   containers:
-  - name: kubernetes-simple-pod
-    image: arisu1000/simple-container-app:latest
-    volumeMounts:
-    - mountPath: /emptydir
-      name: emptydir-vol
+    - name: kubernetes-simple-pod
+      image: arisu1000/simple-container-app:latest
+      volumeMounts:
+        - mountPath: /emptydir
+          name: emptydir-vol
   volumes:
-  - name: emptydir-vol
-    emptyDir: {}
+    - name: emptydir-vol
+      emptyDir: {}
 ```
 
 spec 부분을 확인해보자. 쿠버네티스에서 볼륨을 설정할 때의 기본 형식이다.
 
 1. .spec.volumes[]
-    - 하위 필드에 사용하려는 볼륨들을 먼저 선언
-    - .name 필드 값을 emptydir-vol이라는 이름으로 설정
-    - emptyDir을 사용하려고 .emptyDir 필드 값으로 {} 빈 값 설정함
+
+   - 하위 필드에 사용하려는 볼륨들을 먼저 선언
+   - .name 필드 값을 emptydir-vol이라는 이름으로 설정
+   - emptyDir을 사용하려고 .emptyDir 필드 값으로 {} 빈 값 설정함
 
 2. .spec.containers[].volumeMounts[]
-    - 선언한 볼륨 사용
-    - volumeMounts 하위 필드에서 선언한 볼륨을 불러와서 사용할 수 있음
-    - name 필드 값을 emptydir-vol로 설정해 볼륨을 사용할 수 있도록 함
-    - mountPath 필드 값으로 컨테이너의 /emptydir 디렉터리를 설정해 볼륨을 마운트 함
+   - 선언한 볼륨 사용
+   - volumeMounts 하위 필드에서 선언한 볼륨을 불러와서 사용할 수 있음
+   - name 필드 값을 emptydir-vol로 설정해 볼륨을 사용할 수 있도록 함
+   - mountPath 필드 값으로 컨테이너의 /emptydir 디렉터리를 설정해 볼륨을 마운트 함
 
 ## **14.1.2 hostPath**
 
-| emptyDir | hostPath | 
-|------|----------|
-| 임시 디렉터리를 마운트 | 호스트에 있는 실제 파일이나 디렉터리를 마운트 |
-| 컨테이너를 재시작했을 때 데이터를 보존하는 역할 | 파드를 재시작했을 때도 호스트에 데이터가 남음 |
+| emptyDir                                                                                         | hostPath                                                                                                       |
+| ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| 임시 디렉터리를 마운트                                                                           | 호스트에 있는 실제 파일이나 디렉터리를 마운트                                                                  |
+| 컨테이너를 재시작했을 때 데이터를 보존하는 역할                                                  | 파드를 재시작했을 때도 호스트에 데이터가 남음                                                                  |
 | 모니터링 툴을 섬세하게 설정했는데도 재시작 했을 때, <br> 설정만큼은 남기고 싶을 때 임시로 마운트 | 스프링부트에서 로그 파일 뜯어 볼 때, <br> hostPath를 설정하지 않으면 쿠버네티스가 재시작 했을 때 로그가 없어짐 |
-| 파드가 재시작 할 때 같은 상태를 유지하고 싶을 때 | 실제 데이터 저장 |
+| 파드가 재시작 할 때 같은 상태를 유지하고 싶을 때                                                 | 실제 데이터 저장                                                                                               |
 
 - 호스트의 중요 디렉터리를 컨테이너에 마운트해서 사용할 수 있다.
 - `/var/lib/docker` 같은 도커 시스템용 디렉터리를 컨테이너에서 사용할 때 혹은 시스템용 디렉터리를 마운트해서 **시스템을 모니터링하는 용도로도** 사용할 수 있다.
@@ -141,13 +142,13 @@ volumes:
 ```
 
 1. .spec.containers[].volumeMounts
-    - .mountPath 필드는 볼륨을 컨테이너의 /test-volume이라는 디렉터리에 마운트하도록 값을 설정
-    - .name 필드로는 hostpath-vol로 볼륨의 이름 설정
+   - .mountPath 필드는 볼륨을 컨테이너의 /test-volume이라는 디렉터리에 마운트하도록 값을 설정
+   - .name 필드로는 hostpath-vol로 볼륨의 이름 설정
 2. .spec.volumes[]
-    - .name 필드는 볼륨의 이름인 hostpath-vol으로 설정
-    - 경로를 뜻하는 .hostPath.path 필드 값으로는 호스트의 /tmp 디렉터리 설정
-    - 설정한 경로의 타입이 디렉터리임을 알리기 위해 .type 필드 값으로 Directory 설정
-    - .spec.volumes[].hostpath.type의 필드 값
+   - .name 필드는 볼륨의 이름인 hostpath-vol으로 설정
+   - 경로를 뜻하는 .hostPath.path 필드 값으로는 호스트의 /tmp 디렉터리 설정
+   - 설정한 경로의 타입이 디렉터리임을 알리기 위해 .type 필드 값으로 Directory 설정
+   - .spec.volumes[].hostpath.type의 필드 값
 
 ## **실습 1**
 
@@ -195,18 +196,18 @@ metadata:
   name: kubernetes-hostpath-pod
 spec:
   containers:
-  - name: kubernetes-hostpath-pod
-    image: arisu1000/simple-container-app:latest
-    volumeMounts:
-    - mountPath: /test-volume
-      name: hostpath-vol
-    ports:
-    - containerPort: 8080
+    - name: kubernetes-hostpath-pod
+      image: arisu1000/simple-container-app:latest
+      volumeMounts:
+        - mountPath: /test-volume
+          name: hostpath-vol
+      ports:
+        - containerPort: 8080
   volumes:
-  - name: hostpath-vol
-    hostPath:
-      path: /tmp
-      type: Directory
+    - name: hostpath-vol
+      hostPath:
+        path: /tmp
+        type: Directory
 ```
 
 ```shell
@@ -255,6 +256,7 @@ nfs 볼륨은 기존에 사용하는 NFS 서버를 이용해서 파드에 마운
 ## **실습**
 
 노드 하나에 NFS 서버를 설정한 후 공유해서 사용한다.
+
 - 외부 볼륨이 아닌 hostPath 볼륨으로 NFS 서버를 만들고, 다른 파드에서 해당 파드의 볼륨을 마운트한다.
 
 /volume/volume-nfsserver.yml
@@ -277,42 +279,45 @@ spec:
         app: nfs-server
     spec:
       containers:
-      - name: nfs-server
-        image: arisu1000/nfs-server:latest
-        ports:
-        - name: nfs
-          containerPort: 2049
-        - name: mountd
-          containerPort: 20048
-        - name: rpcbind
-          containerPort: 111
-        securityContext:
-          privileged: true
-        volumeMounts:
-        - mountPath: /exports
-          name: hostpath-vol
+        - name: nfs-server
+          image: arisu1000/nfs-server:latest
+          ports:
+            - name: nfs
+              containerPort: 2049
+            - name: mountd
+              containerPort: 20048
+            - name: rpcbind
+              containerPort: 111
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - mountPath: /exports
+              name: hostpath-vol
       volumes:
-      - name: hostpath-vol
-        hostPath:
-          path: /tmp
-          type: Directory
+        - name: hostpath-vol
+          hostPath:
+            path: /tmp
+            type: Directory
 ```
 
 `mountd`
+
 - NFS 서버에서 사용하는 프로세스이다.
 - 요청이 왔을 때 지정한 디렉터리로 볼륨을 마운트 하는 `mountd` 데몬이 사용하는 포트를 지정한다.
 
 `rpcbind`
+
 - rpcbind도 NFS 서버에서 사용하는 프로세스이다.
 - 시스템에서 Remote Procedure Call 서비스를 관리할 rpcbind 데몬이 사용하는 포트를 지정한다.
 
 `securityContext`
+
 - 컨테이너의 보안을 설정한다.
 - 현재 상태는 모든 호스트 장치에 접근이 가능하다.
 
 `volumeMounts`
-- 볼륨을 마운트할 디렉터리 경로로 `/exports`를 지정한다.
 
+- 볼륨을 마운트할 디렉터리 경로로 `/exports`를 지정한다.
 
 `deployment`를 생성하고, 실행한 컨테이너의 IP를 확인한다.
 
@@ -347,18 +352,18 @@ spec:
         app: nfs-client
     spec:
       containers:
-      - name: kubernetes-nfsapp-pod
-        image: arisu1000/simple-container-app:latest
-        volumeMounts:
-        - mountPath: /test-nfs # nfs 볼륨을 마운트할 디렉터리 설정
-          name: nfs-vol
-        ports:
-        - containerPort: 8080
+        - name: kubernetes-nfsapp-pod
+          image: arisu1000/simple-container-app:latest
+          volumeMounts:
+            - mountPath: /test-nfs # nfs 볼륨을 마운트할 디렉터리 설정
+              name: nfs-vol
+          ports:
+            - containerPort: 8080
       volumes:
-      - name: nfs-vol
-        nfs:
-          server: 10.1.0.172 # nfs-server 파드의 IP
-          path: "/exports"
+        - name: nfs-vol
+          nfs:
+            server: 10.1.0.172 # nfs-server 파드의 IP
+            path: "/exports"
 ```
 
 파드 2개가 nfs 볼륨을 사용할 수 있는 상태로 실행한다.
@@ -374,6 +379,7 @@ kubernetes-nfsapp-pod-85689b5fbd-ndtx8   0/1     ContainerCreating      0       
 ```
 
 이 파드들 중 하나에 접속해서 파일을 변경해보자.
+
 - `index.html`은 `nfs-server`가 자동으로 생성한다.
 
 ```shell
@@ -404,10 +410,12 @@ modify
 쿠버네티스에서 볼륨을 사용하는 구조는 다음과 같다.
 
 PV (persistent volume)
+
 - 볼륨 자체, 클러스터 안에서 자원으로 다룬다.
 - 파드와는 별개로 관리되고, 별도의 생명 주기가 있다.
 
 PVC (persistent volume claim)
+
 - 사용자가 PV에 하는 요청을 의미한다.
 - 사용하고 싶은 용량, 읽기/쓰기 모드 설정 등을 정해서 요청한다.
 
@@ -433,7 +441,7 @@ PV와 PVC의 매핑은 1대1 관계, PVC 하나가 여러 개 PV에 바인딩될
 
 ### 14.2.3 사용
 
-PVC - 파드에 설정 
+PVC - 파드에 설정
 
 파드 - PVC를 볼륨으로 인식해서 사용
 
@@ -446,20 +454,19 @@ PVC - 파드에 설정
 사용이 끝난 PVC는 삭제, PVC를 사용하던 PV를 초기화 하는 과정을 거치는 것을 반환이라고 함, 초기화 정책의 3가지
 
 1. Retain
-    - PV를 그대로 보존
-    - PVC가 삭제되면 사용 중이던 PV는 해제 상태라서, 아직 다른 PVC가 재사용할 수 없음
-    - 단순히 사용 해제 상태! PV 안의 데이터는 그대로 남아 있음
-    - 이 PV를 재사용 하려면 관리자가 다음 순서대로 직접 초기화 해야 함
-    1. PV 삭제 - PV가 외부 스토리지와 연결 되었다면, PV는 삭제되더라도 외부 스토리지의 볼륨은 그대로 남아 있음
-    2. 스토리지에 남은 데이터를 직접 정리함
-    3. 남은 스토리지의 볼륨을 삭제하거나 재사용하려면 해당 볼륨을 이용하는 PV를 다시 만듦
+   - PV를 그대로 보존
+   - PVC가 삭제되면 사용 중이던 PV는 해제 상태라서, 아직 다른 PVC가 재사용할 수 없음
+   - 단순히 사용 해제 상태! PV 안의 데이터는 그대로 남아 있음
+   - 이 PV를 재사용 하려면 관리자가 다음 순서대로 직접 초기화 해야 함
+   1. PV 삭제 - PV가 외부 스토리지와 연결 되었다면, PV는 삭제되더라도 외부 스토리지의 볼륨은 그대로 남아 있음
+   2. 스토리지에 남은 데이터를 직접 정리함
+   3. 남은 스토리지의 볼륨을 삭제하거나 재사용하려면 해당 볼륨을 이용하는 PV를 다시 만듦
 2. Delete
-    - PV를 삭제하고 연결된 외부 스토리지 쪽의 볼륨도 삭제
-    - 프로비저닝에서 동적 볼륨 할당으로 생성된 PV들은 기본 반환 정책이 delete
-    
+   - PV를 삭제하고 연결된 외부 스토리지 쪽의 볼륨도 삭제
+   - 프로비저닝에서 동적 볼륨 할당으로 생성된 PV들은 기본 반환 정책이 delete
 3. Recycle
-    - PV의 데이터들을 삭제하고 다시 새로운 PVC에서 PV를 사용할 수 있도록 함
-    - 특별한 파드를 만들어 두고 데이터를 초기화하는 기능도 있음 → will be deprecated.. why?
+   - PV의 데이터들을 삭제하고 다시 새로운 PVC에서 PV를 사용할 수 있도록 함
+   - 특별한 파드를 만들어 두고 데이터를 초기화하는 기능도 있음 → will be deprecated.. why?
 
 ## 14.3 퍼시스턴트 볼륨 템플릿 - PV
 
@@ -499,8 +506,8 @@ spec:
 해당 PV의 볼륨 플러그인 명시, 하위의 .path 필드에는 마운트시킬 로컬 서버의 경로를 설정
 
 1. 위의 코드를 적용해보자
-    - status가 available이면 잘 적용된 것
-    - 특정 PVC에 연결된 bound, PVC는 삭제되었고 PV는 아직 초기화 되지 않은 released, 자동 초기화를 실패한 failed
+   - status가 available이면 잘 적용된 것
+   - 특정 PVC에 연결된 bound, PVC는 삭제되었고 PV는 아직 초기화 되지 않은 released, 자동 초기화를 실패한 failed
 
 ```powershell
 [root@k8s-master jh]# kubectl apply -f pv-hostname.yaml 
@@ -539,13 +546,9 @@ storage
 앞서 PV의 용량 설정을 2Gi로 하였고, 내가 현재 사용 가능한 스토리지 용량은 3Gi이다. 이때 PVC의 용량을 얼마로 해야 할까?
 
 - 정답
-    
-    1GB
-    
-    만약 PV의 용량 이상을 설정하면, 사용할 수 있는 PV가 없으므로 PVC를 생성할 수 없는 pending 상태가 됨!
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7ee22bbf-f04e-4fa4-9f6a-3c3277e80c15/acb2b677-fc4e-41c6-9e4d-5a6267a5d637/Untitled.png)
-    
+  1GB
+  만약 PV의 용량 이상을 설정하면, 사용할 수 있는 PV가 없으므로 PVC를 생성할 수 없는 pending 상태가 됨!
+  ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7ee22bbf-f04e-4fa4-9f6a-3c3277e80c15/acb2b677-fc4e-41c6-9e4d-5a6267a5d637/Untitled.png)
 
 2G - 여진, 수민, 명근 / **1G - 동희** / **2G 이하 - 완돌아버님**
 
@@ -592,12 +595,12 @@ spec:
   accessModes: # 읽기/쓰기 옵션
   - ReadWriteOnce
   storageClassName: manual
-  persistentVolumeReclaimPolicy: Delete 
+  persistentVolumeReclaimPolicy: Delete
   hostPath:
     **path: /tmp/k8s-pv** 
 ```
 
-### PVC에 레이블  추가
+### PVC에 레이블 추가
 
 /volume/pvc-hostpath-label.yaml
 
@@ -629,7 +632,7 @@ $ kubectl apply -f pv-hostpath-label.yaml
 $ kubectl apply -f pvc-hostpath-label.yaml
 ```
 
-## 14.6  파드에서 PVC를 볼륨으로 사용하기
+## 14.6 파드에서 PVC를 볼륨으로 사용하기
 
 만든 PVC를 실제 파드에 붙여보자
 
@@ -685,7 +688,7 @@ $ kubectl apply -f deployment-pvc
 $ kubectl get pods
 // 파드 이름 확인
 
-$ kubectl port-forward pds/파드 이름 8080:8080 
+$ kubectl port-forward pds/파드 이름 8080:8080
 ```
 
 1. 마지막 명령어로 파드에 접근할 수 있는 포트 번호를 설정함
@@ -694,25 +697,20 @@ $ kubectl port-forward pds/파드 이름 8080:8080
 
 ### 퀴즈
 
-PV가 생성된 곳? 
+PV가 생성된 곳?
 
 여진, 수민, 동희, 명근 - tmp / **완돌아버지 - tmp/k8s-pv**
 
 - 정답
-    
-    /tmp/k8s-pv
-    
-    로컬 서버의 {} 디렉터리가 컨테이너의 /tmp 디렉터리 하위에 마운트 되었을 것임!
-    
-    ```yaml
-    $ cat /tmp/k8s-pv/app.log
-    [GIN] 2023/11/27 - 07:32:17 | 200 |       777.2µs |       127.0.0.1 | GET      /
-    [GIN] 2023/11/27 - 07:32:19 | 200 |       241.2µs |       127.0.0.1 | GET      /
-    [GIN] 2023/11/27 - 07:32:19 | 200 |       138.9µs |       127.0.0.1 | GET      /
-    ```
-    
-    kubernetes-simple-app 디플로이먼트의 접속 로그인 app.log가 컨테이너의 /tmp/app.log에 남아서, 해당 로그 내용은 로컬 서버의 /tmp/k8s-pv/app.log에서 확인할 수 있음
-    
+  /tmp/k8s-pv
+  로컬 서버의 {} 디렉터리가 컨테이너의 /tmp 디렉터리 하위에 마운트 되었을 것임!
+  ```yaml
+  $ cat /tmp/k8s-pv/app.log
+  [GIN] 2023/11/27 - 07:32:17 | 200 |       777.2µs |       127.0.0.1 | GET      /
+  [GIN] 2023/11/27 - 07:32:19 | 200 |       241.2µs |       127.0.0.1 | GET      /
+  [GIN] 2023/11/27 - 07:32:19 | 200 |       138.9µs |       127.0.0.1 | GET      /
+  ```
+  kubernetes-simple-app 디플로이먼트의 접속 로그인 app.log가 컨테이너의 /tmp/app.log에 남아서, 해당 로그 내용은 로컬 서버의 /tmp/k8s-pv/app.log에서 확인할 수 있음
 
 ## 14.7 PVC 크기 늘리기
 

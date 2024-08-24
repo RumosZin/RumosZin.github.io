@@ -2,8 +2,7 @@
 title: "[Kubernetes] 쿠버네티스 아키텍처"
 author:
 date: 2023-11-07 11:30:00 +0900
-categories:
-  [Kubernetes, 쿠버네티스 입문:90가지 예제로 배우는 컨테이너 관리 자동화 표준]
+categories: [Google Developer Student Club, 쿠버네티스 스터디]
 tags: [Kubernetes]
 ---
 
