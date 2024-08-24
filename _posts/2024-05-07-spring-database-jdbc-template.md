@@ -1,8 +1,12 @@
 ---
 title: "[Spring/Database] JDBC와 JDBCTemplate"
-author: 
+author:
 date: 2024-05-07 22:19:00 +0900
-categories: [Spring, DB]
+categories:
+  [
+    Google Developer Student Club,
+    Fairy Tale Island / 2024 Google Solution Challenge
+  ]
 tags: [Spring, Database, ORM]
 ---
 
@@ -31,6 +35,7 @@ Spring에서 순수 JDBC를 이용해 데이터베이스에 접근하는 방법�
 ### **Spring JDBC 사용 방법**
 
 `build.gradle`에 의존성을 추가한다.
+
 ```gradle
 dependencies {
     ...
@@ -87,7 +92,6 @@ public class JDBCMemberRepository implements MemberRepository {
 }
 ```
 
-
 `String sql = "insert into member(name) values(?)";`처럼 SQL문을 직접 구현해야 하고, `try-catch`문과 같이 모든 메서드에 데이터베이스 연결 구문을 작성해야 했다.
 
 스키마가 확장될 떄마다 SQL문을 수정해야 하는 점은 소프트웨어 개발 원칙에서 Open-Closed 원칙에도 어긋나고, 개발 비용을 증가시킨다. `try-catch` 안의 데이터베이스 연결 코드가 반복되는 점도 대표적인 불편한 점이다.
@@ -134,7 +138,7 @@ public class JDBCTemplateMemberRepository implements MemberRepository {
 }
 ```
 
-이전 순수 JDBC를 사용할 떄는 모든 메서드 구현마다 `try-catch`를 사용해서 데이터베이스 연결을 설정해야 했는데, JDBCTemplate에서는 그렇지 않다. 확연히 연결 설정와 관련된 중복 코드가 삭제되었다! 
+이전 순수 JDBC를 사용할 떄는 모든 메서드 구현마다 `try-catch`를 사용해서 데이터베이스 연결을 설정해야 했는데, JDBCTemplate에서는 그렇지 않다. 확연히 연결 설정와 관련된 중복 코드가 삭제되었다!
 
 하지만 `List<Member> result = jdbcTemplate.query("select * from member where id = ?", memberRowMapper(), id);`과 같이, SQL문은 직접 작성해야 한다.
 

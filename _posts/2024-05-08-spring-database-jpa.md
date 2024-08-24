@@ -1,8 +1,12 @@
 ---
 title: "[Spring/Database] Spring JPA와 Spring Data JPA"
-author: 
+author:
 date: 2024-05-08 23:30:00 +0900
-categories: [Spring, DB]
+categories:
+  [
+    Google Developer Student Club,
+    Fairy Tale Island / 2024 Google Solution Challenge
+  ]
 tags: [Spring, Database, ORM]
 ---
 
@@ -31,6 +35,7 @@ Java에서 인터페이스 : 구현체 관계처럼, **JPA : Hibernate도 인터
 ### **Spring JPA 사용 방법**
 
 `build.gradle`에 의존성을 추가한다.
+
 ```gradle
 dependencies {
     ...
@@ -45,7 +50,7 @@ dependencies {
 
 **Spring JPA는 `EntityManager` 객체를 이용한다. `EntityManger`도 JPA에서 정의된 인터페이스의 일부이고, 명시적으로 Java에 등록된 객체를 데이터베이스에 저장된 데이터와 매핑한다.** [JpaMemberRepository](https://github.com/RumosZin/spring-various-db-access/commit/adbae3634b6c4810f118ce1be958d111cb798f10)에서 `EntityManager` 객체를 생성자에 주입 받아 사용할 수 있다.
 
-명시적으로 객체를 등록하려면, 도메인에 `@Entity` 어노테이션을 달아준다. `EntityManager`는 `@Entity` 어노테이션을 가지고 있는 객체들을 관리하고, 데이터베이스 테이블과 매핑하여 데이터를 Create / Update / Save 하는 기능들을 수행한다. 
+명시적으로 객체를 등록하려면, 도메인에 `@Entity` 어노테이션을 달아준다. `EntityManager`는 `@Entity` 어노테이션을 가지고 있는 객체들을 관리하고, 데이터베이스 테이블과 매핑하여 데이터를 Create / Update / Save 하는 기능들을 수행한다.
 
 (여기서는 데이터베이스에 접근하는 다양한 방법들을 소개하는데 중점을 두므로, `Spring JPA`의 `EntityManager`에 대해서는 다른 글에서 자세히 다루겠다.)
 
@@ -123,7 +128,7 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Lon
 
 ![Untitled](/assets/img/240107-2.png){: width="60%"}
 
-Spring으로 개발하면서 앞선 `Spring JPA`에서 등장한 `EntityManager`를 직접 다루지 않았었다. 분명 ORM으로 `JPA`를 사용하고 있었는데, 직접 다룰 일이 왜 없을까 생각해보니, 데이터베이스에 접근하는 상황에서 `Repository`를 정의해서 접근했기 떄문이다! 
+Spring으로 개발하면서 앞선 `Spring JPA`에서 등장한 `EntityManager`를 직접 다루지 않았었다. 분명 ORM으로 `JPA`를 사용하고 있었는데, 직접 다룰 일이 왜 없을까 생각해보니, 데이터베이스에 접근하는 상황에서 `Repository`를 정의해서 접근했기 떄문이다!
 
 `Spring Data JPA`는 JPA에 추가적인 기능을 제공해 개발을 간편하게 만드는 라이브러리/프레임워크이다. **이는 `Repository` 인터페이스를 제공함으로써 이루어진다! `Spring Data Jpa`가 궁극적으로 제공하는, 가장 윗 단의 `Repository` 인터페이스를 이용함으로써 JPA 기반 애플리케이션 개발을 간편하게 할 수 있었던 것이다.**
 

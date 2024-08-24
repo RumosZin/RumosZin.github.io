@@ -1,8 +1,8 @@
 ---
 title: "[Tips] 로컬 컴퓨터에서 원격 서버 접속하기 (feat. key-gen 에러)"
-author: 
+author:
 date: 2024-03-11 13:30:00 +0900
-categories: [Server, Server-Tips]
+categories: [인턴십, Server]
 tags: [Tips]
 ---
 
@@ -29,6 +29,7 @@ host dev_server
 ### **.ssh 폴더 권한 설정**
 
 루트 경로에서 `ls -al` 명령어를 이용해 `.ssh` 폴더의 권한을 확인하고, `read`, `execute` 권한을 추가한다.
+
 ```shell
 # before
 $ ls -al
@@ -49,13 +50,13 @@ rwxr-xr-x   4 {root_name}  staff    128  3 11 10:58 .ssh
 ## **원격 CentOS 접속**
 
 config에 `user`를 `rumos`, `hostname`을 `192.168.@@.@@`로 설정했기 때문에, `ssh rumos@192.168.@@.@@` 명령어와 같다.
+
 ```shell
 $ ssh dev_server
-rumos@192.168.@@.@@'s password: 
+rumos@192.168.@@.@@'s password:
 Last login: Mon Mar 11 11:04:26 2024 from gimyunjcbookpro
-[rumos@RUMOS-CentOS ~]$ 
+[rumos@RUMOS-CentOS ~]$
 ```
-
 
 ### **key-gen 오류**
 
@@ -81,7 +82,7 @@ Host key verification failed.
 ### **해결 방법**
 
 - `ssh-keygen -R {host IP}` 로 기존의 key를 삭제한다.
-    - ex) `ssh-keygen -R 192.168.@@.@@`
+  - ex) `ssh-keygen -R 192.168.@@.@@`
 - `ssh dev_centos`로 다시 접속하고 connecting 질문에 `yes` 입력하면 정상적으로 접속할 수 있다.
 
 <script src="https://utteranc.es/client.js"

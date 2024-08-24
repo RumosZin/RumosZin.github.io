@@ -1,8 +1,8 @@
 ---
 title: "[C++] cin, cout 시간 초과 해결 방법"
-author: 
+author:
 date: 2024-04-20 18:28:00 +0900
-categories: [Problem Solving, Solving]
+categories: [Problem Solving, 문제 풀이]
 tags: [Tips, C++]
 ---
 

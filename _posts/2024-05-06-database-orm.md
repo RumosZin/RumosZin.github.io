@@ -1,8 +1,12 @@
 ---
 title: "[Database] ORM 정의, 등장 배경, 장단점"
-author: 
+author:
 date: 2024-05-06 20:12:00 +0900
-categories: [Spring, DB]
+categories:
+  [
+    Google Developer Student Club,
+    Fairy Tale Island / 2024 Google Solution Challenge
+  ]
 tags: [Database, DB]
 ---
 
@@ -24,7 +28,7 @@ ORM은 Object-Relation Mapping의 준말로, 말그대로 객체와 관계형 �
 
 ORM 개념이 없던 시대에는, 프로그래밍 언어의 객체와 관계형 데이터베이스의 데이터 사이에 간극이 존재했다. 예를 들어, 사용자가 회원가입하는 로직을 구현한다고 하자.
 
-우선 프로그래밍 언어로 아이디, 비밀번호를 입력받는 코드를 짠다. 이 정보들은 추후 로그인 시 이용하기 위해 **영속적(Persistence)으로 관리 되어야 한다. 그래서 반드시 데이터베이스에 저장해야 한다.**  
+우선 프로그래밍 언어로 아이디, 비밀번호를 입력받는 코드를 짠다. 이 정보들은 추후 로그인 시 이용하기 위해 **영속적(Persistence)으로 관리 되어야 한다. 그래서 반드시 데이터베이스에 저장해야 한다.**
 
 기본적으로 프로그래밍 언어는 **사용자 객체**를 기준으로 개발한다. 하지만 관계형 데이터베이스에 저장될 때는 사용자 객체가 아니라, **데이터**가 저장되어야 한다. **즉, 프로그래밍 언어에서 사용자 Entity의 Attribute가 관계형 데이터베이스에서 사용자 Table의 Column과 대응되기 때문에, Attribute의 값이 적절한 Column의 데이터가 되도록 개발자가 직접 매핑을 해야 했다.**
 
@@ -51,7 +55,7 @@ INSERT INRO user(user_id, user_password) VALUES (userId, userPassword)
 
 ### **ORM의 등장**
 
-위와 같은 문제를 해결하고자 등장한 것이 ORM이다. 
+위와 같은 문제를 해결하고자 등장한 것이 ORM이다.
 
 - 프로그래밍 언어로 객체 지향 개발을 한다.
 

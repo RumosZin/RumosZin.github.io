@@ -1,8 +1,12 @@
 ---
 title: "[Spring] Spring security, OAuth 2.0으로 구글 로그인 구현하기"
-author: 
+author:
 date: 2024-03-12 18:00:00 +0900
-categories: [Spring, 개발]
+categories:
+  [
+    Google Developer Student Club,
+    Fairy Tale Island / 2024 Google Solution Challenge
+  ]
 tags: [Spring, 개발, OAuth, Spring Security]
 ---
 
@@ -18,16 +22,16 @@ spring boot 3.2.3 버전 프로젝트에서 spring security와 oauth를 이용�
 
 1. GCP에 들어가서 spring-security-oauth 이름의 프로젝트를 생성한다. 이름은 자유롭게 정한다.
 2. 만든 프로젝트에 접속 후, `API 및 서비스 / 사용자 인증 정보`로 이동한다.
-1. `사용자 인증 정보 만들기 / OAuth 클라이언트 ID 항목`을 선택한다.
-2. client ID를 생성하기 전에 동의 화면을 구성한다.
-    - User Type : 외부
-    - 앱 이름 : 구글 로그인 화면에서 뜰 앱의 이름
-    - 범위 추가 또는 삭제 : email, profile, openid 선택
-3. `OAuth 클라이언트 ID 만들기`로 이동해서 애플리케이션 유형을 `웹 애플리케이션`으로 설정한다.
-4. 승인된 리디렉션 URL 주소를 등록한다. 인증에 성공한 경우 구글에서 리다이렉트할 URL이다.
-    - spring boot 3 버전에서, spring security가 `{domain}/login/oauth2/code/google`로 리다이렉트 URL을 지원하기 때문에, 별도로 URL을 지원하는 컨트롤러를 만들지 않아도 된다.
-    - 현재 로컬에서 개발 중이기 때문에 `http://localhost:8080/login/oauth2/code/google`만 등록하는데, 서버에 배포하면 주소를 추가해야 한다. 
-5. 생성 버튼을 누르면 클라이언트 ID, 클라이언트 보안 비밀번호를 알 수 있다. 노출되지 않게 복사해서 저장해둔다.
+3. `사용자 인증 정보 만들기 / OAuth 클라이언트 ID 항목`을 선택한다.
+4. client ID를 생성하기 전에 동의 화면을 구성한다.
+   - User Type : 외부
+   - 앱 이름 : 구글 로그인 화면에서 뜰 앱의 이름
+   - 범위 추가 또는 삭제 : email, profile, openid 선택
+5. `OAuth 클라이언트 ID 만들기`로 이동해서 애플리케이션 유형을 `웹 애플리케이션`으로 설정한다.
+6. 승인된 리디렉션 URL 주소를 등록한다. 인증에 성공한 경우 구글에서 리다이렉트할 URL이다.
+   - spring boot 3 버전에서, spring security가 `{domain}/login/oauth2/code/google`로 리다이렉트 URL을 지원하기 때문에, 별도로 URL을 지원하는 컨트롤러를 만들지 않아도 된다.
+   - 현재 로컬에서 개발 중이기 때문에 `http://localhost:8080/login/oauth2/code/google`만 등록하는데, 서버에 배포하면 주소를 추가해야 한다.
+7. 생성 버튼을 누르면 클라이언트 ID, 클라이언트 보안 비밀번호를 알 수 있다. 노출되지 않게 복사해서 저장해둔다.
 
 <br>
 
@@ -36,7 +40,7 @@ spring boot 3.2.3 버전 프로젝트에서 spring security와 oauth를 이용�
 ### **build.gradle 설정**
 
 ```bash
-# spring boot 
+# spring boot
 implementation 'org.springframework.boot:spring-boot-starter-web'
 implementation 'org.springframework.boot:spring-boot-starter'
 testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -83,8 +87,8 @@ spring:
       client:
         registration:
           google:
-            client-id: {Client ID}
-            client-secret: {Client Secret}
+            client-id: { Client ID }
+            client-secret: { Client Secret }
             scope:
               - email
               - profile
@@ -100,7 +104,7 @@ spring:
 
 개인 정보로 인해 application.yml의 원본은 올리지 않았고, `application-example.yml`을 참고해서 `application.yml`을 작성한다.
 
-mysql 관련한 정보를 직접 입력해야 한다. 
+mysql 관련한 정보를 직접 입력해야 한다.
 
 application.yml에서, application-oauth.yml을 포함하도록 설정한다.
 
@@ -138,7 +142,6 @@ application-oauth.yml에는 클라이언트 ID와 클라이언트 보안 비밀�
 `localhost:8080`으로 접속 후 `google login`을 누르면 아래 화면을 통해 구글 로그인에 성공한다!
 
 ![image](https://github.com/RumosZin/spring-security-oauth/assets/81238093/c7a3f0d6-5152-461d-831a-91b709439597)
-
 
 ### **참고자료**
 

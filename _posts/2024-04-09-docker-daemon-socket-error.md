@@ -1,8 +1,8 @@
 ---
 title: "[Docker] Docker 오류와 해결 방법 모음.zip"
-author: 
+author:
 date: 2024-04-09 13:30:00 +0900
-categories: [Server, Docker]
+categories: [인턴십, DevOps]
 tags: [Tips, Docker]
 ---
 
@@ -37,7 +37,7 @@ Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docke
 
 ```shell
 $ sudo systemctl status docker
-[sudo] ...의 암호: 
+[sudo] ...의 암호:
 ○ docker.service - Docker Application Container Engine
      Loaded: loaded (/usr/lib/systemd/system/docker.service; **disabled**; preset: **disabled**)
      Active: inactive (dead)

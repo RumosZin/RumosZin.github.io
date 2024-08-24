@@ -2,7 +2,7 @@
 title: "[Sequelize] Unmanaged/Managed Transaction과 주의사항"
 author:
 date: 2024-04-25 20:00:00 +0900
-categories: [ORM, Sequelize]
+categories: [인턴십, Svelte / SvelteKit]
 tags: [ORM, Sequelize, 인턴]
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: "[Supabase/Docker] Supabase 컨테이너 password 에러 : password 변경하기"
-author: 
+author:
 date: 2024-03-11 13:30:00 +0900
-categories: [Database, Supabase]
+categories: [인턴십, Database]
 tags: [Database, Supabase, Docker]
 ---
 
@@ -14,7 +14,7 @@ tags: [Database, Supabase, Docker]
 
 [Supabase 컨테이너 password 에러 : `.env` 확인하기](https://rumoszin.github.io/posts/docker-supabase-container-error-solution/) 방법으로도 해결이 안되고 Supabase 컨테이너가 재시작하는 경우가 있다.
 
-아래와 같이 `docker ps` 명령어로 확인한 결과 status가 `Restarting (1) 17 seconds`인 경우가 있다. 
+아래와 같이 `docker ps` 명령어로 확인한 결과 status가 `Restarting (1) 17 seconds`인 경우가 있다.
 
 ```shell
 [yunjin@YUNJIN-CentOS db]$ docker ps
@@ -87,7 +87,7 @@ Node.js v18.19.0
 - **`storage-api` : password authentication failed for user "supabase_storage_admin"**
 - **`gotrue` : failed to connect to host=db user=supabase_auth_admin database=postgres**
 - **`postgrest/postgrest` : password authentication failed for user "authenticator"**
-- **`supabase/postgres` : FATAL:  password authentication failed for user "supabase_auth_admin"**
+- **`supabase/postgres` : FATAL: password authentication failed for user "supabase_auth_admin"**
 
 <br>
 
@@ -95,7 +95,8 @@ Node.js v18.19.0
 
 Supabase를 클라우드에 띄워놓고 사용하는 방식이 아니라, 개발 서버를 두고 Self-Hosting 하는 방식이라 해결 방법을 찾기 어려웠다. **이럴 때는 단순히 구글링을 하기 보다는, 공식 문서 레포지토리의 Self-Hosted 라벨을 찾는 것이 좋다.** 실제로 Closed된 Self-Hosted 라벨까지 거의 확인했다! 도움이 된 [Issue의 Comment](https://github.com/supabase/supabase/issues/18836#issuecomment-1804051169)를 첨부한다.
 
-[Step 1] `postgres`의 컨테이너 아이디를 알아낸다. 
+[Step 1] `postgres`의 컨테이너 아이디를 알아낸다.
+
 ```shell
 [yunjin@localhost supabase]$ docker ps
 CONTAINER ID   IMAGE                              COMMAND                    CREATED         STATUS                          PORTS                                                                                                      NAMES
@@ -107,6 +108,7 @@ CONTAINER ID   IMAGE                              COMMAND                    CRE
 ```
 
 [Step 2] `postgres` 컨테이너에 접속한다.
+
 ```shell
 [yunjin@localhost supabase]$ docker exec -it 6a96e18b188b /bin/bash
 root@6a96e18b188b
@@ -137,7 +139,7 @@ ALTER ROLE
 postgres=# exit
 ```
 
-[Step 5 (Optional)] `supabase_admin` password를 설정했으므로 `supabase_admin` 계정으로 접속이 가능한지 확인한다. 
+[Step 5 (Optional)] `supabase_admin` password를 설정했으므로 `supabase_admin` 계정으로 접속이 가능한지 확인한다.
 
 ```shell
 root@6a96e18b188b:/# psql -U supabase_admin

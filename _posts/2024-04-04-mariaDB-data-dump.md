@@ -1,8 +1,8 @@
 ---
 title: "[MariaDB] 개발 서버 MariaDB 데이터 백업하기 (feat. mysqldump 명령어)"
-author: 
+author:
 date: 2024-04-04 21:30:00 +0900
-categories: [Database, MariaDB]
+categories: [인턴십, Database]
 tags: [Database, MariaDB]
 ---
 
@@ -20,11 +20,13 @@ tags: [Database, MariaDB]
 
 - 여러 번 dump 하는 경우가 생길 수 있어서, `date -I`를 이용해 파일 이름에 날짜가 들어가도록 했다.
 - `mysqldump command not found` 에러가 생길 수 있는데, 로컬 mysql 설치가 선행되어야 한다.
+
 ```shell
 mysqldump -u root -h -p --databases {database_name} | gzip > ~/dump-$(date -I).sql.tar.gz
 ```
 
-- dump 파일을 이용해서 없어진 테이블을 되돌려보기 위해, 테이블 `world`를 삭제한다. 
+- dump 파일을 이용해서 없어진 테이블을 되돌려보기 위해, 테이블 `world`를 삭제한다.
+
 ```shell
 mysql > drop table world;
 ```
@@ -41,6 +43,7 @@ gunzip dump-$(date -I).sql.tar.gz
 
 - `mysql -u root -p < dump-$(date -I).sql.tar`
 - `mysql -u root -p` 로 접속해서 데이터를 확인할 수 있다.
+
 ```shell
 mysql > show databases;
 mysql > use hello;

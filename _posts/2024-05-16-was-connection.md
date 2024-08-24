@@ -2,7 +2,7 @@
 title: "[Server] WAS 분리 과정에서 만난 Connection Error"
 author:
 date: 2024-05-08 23:30:00 +0900
-categories: [Server, Server-Tips]
+categories: [인턴십, Server]
 tags: [Server, WAS, 인턴]
 ---
 
