@@ -55,6 +55,8 @@ public interface ChallengeRepository extends MongoRepository<Challenge, UUID>
 
 **✅ 이러한 이유와 함께 [코드 리뷰](https://github.com/TodoChallengers/TodoChallengers-BE/pull/15#discussion_r1729794846)를 하니, 리뷰 받는 분도 납득하고 코드를 수정할 수 있었고, 나도 `@NoRepositoryBean`의 역할에 대해 정확히 알아갈 수 있었다.**
 
+![Untitled](/assets/img/240824-1.png){: width="100%"}
+
 <br>
 
 ## **애플리케이션 생성 시점에 등록된 빈 목록 확인하는 코드**
