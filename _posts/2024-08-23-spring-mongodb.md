@@ -3,7 +3,7 @@ title: "Spring에서 MongoDB 사용하기"
 author:
 date: 2024-08-23 00:12:00 +0900
 categories: [도전적으로 목표 뿌시기 / Todo-Challengers, Spring]
-tags: [DB, NoSQL, MongoDB, Spring]
+tags: [Database, NoSQL, MongoDB, Spring]
 ---
 
 <br>

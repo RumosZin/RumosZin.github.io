@@ -7,7 +7,7 @@ categories:
     Google Developer Student Club,
     Fairy Tale Island / 2024 Google Solution Challenge
   ]
-tags: [Database, DB]
+tags: [Database]
 ---
 
 ✅ [🏝️ Fairy-Tale Island 🏝️](https://github.com/GDSC-CAU/FTIsland-BE) 리팩토링!

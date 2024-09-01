@@ -3,7 +3,7 @@ title: "MongoDB를 이용해 Id 필드의 타입 고르기 : Auto Increment vs U
 author:
 date: 2024-08-25 00:12:00 +0900
 categories: [도전적으로 목표 뿌시기 / Todo-Challengers, Spring]
-tags: [DB, NoSQL, MongoDB, Spring]
+tags: [Database, NoSQL, MongoDB, Spring]
 ---
 
 <br>
