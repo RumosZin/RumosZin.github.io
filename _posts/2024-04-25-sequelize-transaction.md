@@ -78,13 +78,19 @@ try {
 }
 ```
 
+<br>
+
 ## **주의 사항**
 
 📌 Sequelize의 create 문에서 error가 throw 되어야 try-catch에서 catch로 가기 때문에 정상적으로 동작할 수 있다. Sequelize의 메서드(create, find …)를 사용하는데 repository에서 `throw new Error()`를 하지 않으면 catch에 걸리지 않는다.
 
-📌 Repository에서 반드시 throw error가 필요하다. BaseRepository를 지정해서 다른 Repository들이 BaseRepository를 extends 한다면 BaseRepository에 custom throw error를 만들어 명시적으로 공통된 에러를 반환하는 것도 좋은 방법이라고 생각한다!
+📌 **✅ Repository에서 반드시 throw error가 필요하다. BaseRepository를 지정해서 다른 Repository들이 BaseRepository를 extends 한다면 BaseRepository에 custom throw error를 만들어 명시적으로 공통된 에러를 반환하는 것도 좋은 방법이다!**
 
 📌 Sequelize의 메서드를 사용하지 않는 경우 정상적으로 롤백되지 않는다. 예를 들어 Sequelize의 find, create를 사용한다면 정상적으로 동작하지만, 직접 구현한 메서드를 사용하는 경우 롤백되지 않을 수 있다.
+
+<br>
+
+**✅ 인턴십을 하며 Sequelize + MariaDB에서 사용하는 트랜잭션 방법에 대해 알아보라고 하셔서 공식 문서에 나오는 내용을 어떻게 코드에 적용할 수 있을지만 알아봤었다. 트랜잭션이 프로젝트에 필요한 이유, Why에 대해서는 어렴풋이 알게 되었으니, How를 공부해야할 것 같다. 관련해서 MySQL의 트랜잭션에 대해 알아보고 다음 글을 작성하도록 하겠다!**
 
 <br>
 <br>
