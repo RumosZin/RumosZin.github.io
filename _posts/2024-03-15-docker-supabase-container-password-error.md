@@ -3,7 +3,7 @@ title: "[Supabase/Docker] Supabase 컨테이너 password 에러 : password 변�
 author:
 date: 2024-03-11 13:30:00 +0900
 categories: [인턴십, Database]
-tags: [Database, Supabase, Docker]
+tags: [Database, Supabase, Docker, 인턴]
 ---
 
 ## **상황**

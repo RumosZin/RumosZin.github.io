@@ -3,7 +3,7 @@ title: "[SvelteKit/Supabase] Build a User Management App with SvelteKit 공식 �
 author:
 date: 2024-03-30 22:17:00 +0900
 categories: [인턴십, Svelte / SvelteKit]
-tags: [SvelteKit, Web]
+tags: [SvelteKit, Web, 인턴]
 ---
 
 ## **Build a User Management App with SvelteKit를 시작한 이유**

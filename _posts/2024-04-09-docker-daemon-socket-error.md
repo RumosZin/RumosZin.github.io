@@ -2,8 +2,8 @@
 title: "[Docker] Docker 오류와 해결 방법 모음.zip"
 author:
 date: 2024-04-09 13:30:00 +0900
-categories: [인턴십, DevOps]
-tags: [Tips, Docker]
+categories: [인턴십, Server]
+tags: [Tips, Docker, 인턴]
 ---
 
 ## **Docker daemon socket Permission denied**
@@ -87,6 +87,9 @@ exec /usr/local/bin/docker-entrypoint.sh: exec format error
 ✅ Docker 이미지를 운영체제/CPU에 맞게 받았는지 확인한다. `docker-compose.yml`에 이미지를 지정했다면, `platform`을 설정해 본인의 개발 환경에 맞는 이미지를 받아야 한다.
 
 `192.168.@@.@@` (개발 서버)의 플랫폼 설정은 `linux/amd64`이고, macOS apple chip인 로컬의 플랫폼 설정은 `linux/arm64`이다!
+
+<br>
+<br>
 
 <script src="https://utteranc.es/client.js"
         repo="RumosZin/rumoszin.github.io"

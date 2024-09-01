@@ -3,7 +3,7 @@ title: "[MariaDB] 개발 서버 MariaDB 데이터 백업하기 (feat. mysqldump 
 author:
 date: 2024-04-04 21:30:00 +0900
 categories: [인턴십, Database]
-tags: [Database, MariaDB]
+tags: [Database, MariaDB, 인턴]
 ---
 
 ## **상황**

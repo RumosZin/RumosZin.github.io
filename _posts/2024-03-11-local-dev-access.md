@@ -3,7 +3,7 @@ title: "[Tips] 로컬 컴퓨터에서 원격 서버 접속하기 (feat. key-gen 
 author:
 date: 2024-03-11 13:30:00 +0900
 categories: [인턴십, Server]
-tags: [Tips]
+tags: [Tips, 인턴]
 ---
 
 ## **로컬에서 .ssh/config 파일 생성**

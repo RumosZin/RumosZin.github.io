@@ -3,7 +3,7 @@ title: "[Supabase] supabase-db 컨테이너에서 storage-bucket 확인하기"
 author:
 date: 2024-04-23 21:00:00 +0900
 categories: [인턴십, Database]
-tags: [Datbase, Supabase, 인턴]
+tags: [Database, Supabase, 인턴]
 ---
 
 인턴십을 진행하면서 데이터베이스는 MariaDB, 스토리지는 Supabase를 사용하고 있다. (회사에서 이전에 진행했던 프로젝트에서 Supabase 스토리지를 cloud를 이용해서 개발자가 모두 공동 데이터베이스에 접근할 수 있도록 설정한 후 개발했다고 한다.
