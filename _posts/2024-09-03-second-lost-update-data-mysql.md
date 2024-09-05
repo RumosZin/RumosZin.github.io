@@ -1,5 +1,5 @@
 ---
-title: "두 번의 갱신 분실 문제의 원인을 찾아보자! (feat. MySQL 락)"
+title: "두 번의 갱신 분실 문제의 원인을 찾아보자! (feat. 공유 잠금, 배타적 잠금)"
 author:
 date: 2024-09-03 12:30:00 +0900
 categories: [AI 프로필 서비스 / 푸앙이 사진관, Spring / Flask]
@@ -45,7 +45,6 @@ tags: [푸앙이사진관, 락]
         // updateEmail 호출
         executor.submit(() -> {
             try {
-                Thread.sleep(100);
                 photoRequestService.updateEmail(userId, email);
                 successCount.incrementAndGet();
             } catch (Exception e) {
