@@ -87,15 +87,17 @@ export const db = drizzle(connection, {
 
 - 출처 : https://velog.io/@gwon713/Nodejs-MySQL-DB-connection-pool
 
+(회사의 코드를 첨부할 수 없어서, 코드 없이 설명만 작성한 점은 양해 부탁드립니다!)
+
 ✅ **로그에서 connection이 closed state일 때는 command를 추가할 수 없다고 했으므로, createConnection의 단일 연결이 끊기고 나서 WAS와 연결이 이루어져서 끊긴 것이라고 생각했다. 반면 createPool 방식은 여러 쿼리를 병렬적으로 실행할 수 있으므로, connection이 하나 closed state여도 다른 connection이 있다면 문제가 발생하지 않을 것이라고 생각했다!**
 
 하지만 변경하고 실행해도 오류는 변화 없이 그대로였다. 여러 connection 중에 유효한 하나만 있으면 되는 상황이 아니라, WAS와의 connection 자체에 문제가 있는 것 같다. 여기까지 테스트를 하고 위와 같은 생각을 하고 있었는데, 사수께서 로그인에서 예외적으로 허용한 Drizzle ORM에서의 커넥션이 문제가 있는 것 같다고 하셨다.
 
 `hook.server.js`에서 lucia를 이용해서 세션을 이용해서 로그인을 구현하고 있다. 이때 `@sveltejs/kit`의 `redirect`를 이용해서 로그인할 수 없는 경우를 처리하는데, 이때 lucia와 연결된 Drizzle ORM이 WAS와 연결되지 않으면서 `redirect`를 정의할 수 없으니 문제가 생긴 게 아닌가 하는 것이다!
 
-다른 `routes/api`의 API들은 WAS에서 제공하도록 설정할 수 있다고 해도, 로그인 `/auth/login` API는 처리 방식이 달라 생긴 문제인 것이다. WAS 분리는 급한 것이 아니니 당장 분리하는 것은 아니고, 추후 WAS를 분리해야 하는 단계에서 Drizzle ORM connection을 다시 확인하기로 하였다.
+다른 `routes/api`의 API들은 WAS에서 제공하도록 설정할 수 있다고 해도, 로그인 `/auth/login` API는 처리 방식이 달라 생긴 문제인 것이다. 일단 createConnection 방식에서 createPool 방식으로 변경한 뒤, 추후 WAS를 분리해야 하는 단계에서 Drizzle ORM connection을 다시 확인하기로 하였다.
 
-**Drizzle ORM connection 관련해서 찾아보다가 알게 된 createPool vs createConnection을 잘 정리해두고, 추후 관련 문제를 만났을 때 낯설지 않도록 해야겠다.**
+**Drizzle ORM connection 관련해서 찾아보다가 알게 된 createPool vs createConnection을 정리해두고, 추후 관련 문제를 만났을 때 낯설지 않도록 해야겠다.**
 
 <br>
 <br>
