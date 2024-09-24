@@ -67,24 +67,7 @@ bun to npm
 - `npm run build:${STAGE}`로 설정하면 `package.json`의 scripts에서 `build:staging`을 참고해서 `vite build --mode staging` 명령어를 실행한다.
   - mode가 staging이면 빌드할 때 .env.staging 환경변수를 이용한다.
 
-```docker
-### Dockerfile.staging
-
-FROM --platform=linux/amd64 node:lts-slim AS build
-
-ARG STAGE=staging
-
-RUN apt-get update -y \
-  && apt-get install -y openssl \
-  && rm -rf /var/lib/apt/lists/* \
-  && npm install -g npm
-
-WORKDIR /app/tmp
-COPY . .
-RUN npm install \
-  **&& npm run build:${STAGE} \**
-  && rm -rf node_modules
-```
+~~사수께 코드 업로드 허락을 받았으나 아무래도 회사에서 이용되는 코드를 공개적인 곳에 올리기는 무리가 있다고 생각해서 코드는 생략한다.~~
 
 ```
 # package.json / scripts
@@ -96,31 +79,6 @@ RUN npm install \
 ### **step 2. stage**
 
 - .env.{STAGE}를 copy 하는 코드를 제외시켰다.
-
-```docker
-FROM --platform=linux/amd64 node:lts-slim AS stage
-
-ENV APP_HOME /app
-ARG STAGE=staging
-
-LABEL maintainer="HyundaiITC-safety-health-system"
-
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends openssl vim \
-  && rm -rf /var/lib/apt/lists/* \
-  && npm install -g npm pm2
-
-COPY --from=build ${APP_HOME}/tmp ${APP_HOME}/tmp
-WORKDIR ${APP_HOME}
-RUN mv ./tmp/build . \
-  && mv ./tmp/package*.json . \
-  && mv ./tmp/ecosystem.config.cjs . \
-  && mkdir -p logs/pm2 \
-  && npm ci --omit dev \
-  && rm -rf tmp
-
-CMD [ "pm2-runtime", "start", "ecosystem.config.cjs"]
-```
 
 <br>
 
@@ -134,33 +92,18 @@ CMD [ "pm2-runtime", "start", "ecosystem.config.cjs"]
 - **✅ `bun dotenv -e .env.staging -- sequelize-cli db:migrate` migration을 빌드 단계에서 제외했으므로 이 단계에서 실행시킨다.**
 - 이후로는 기존과 같이, 빌드된 이미지를 tgz로 압축한 후 협력 업체의 개발서버, 배포서버로 전달한다.
 
+내가 직접 짠 스크립트이지만, 아무래도 회사에 있는 코드이기 때문에 주석만 남기려고 한다.
+
 ```bash
-REGISTRY_URL=
-REGISTRY_PATH=
-IMAGE_TAG=
-IMAGE=$REGISTRY_URL$REGISTRY_PATH:$IMAGE_TAG
+# config
 
-BUILD_USER=
-BUILD_PASSWORD=
+# gitlab access
 
-IMAGE_NAME=@@@@@@-web:staging-current
+# pull new image
 
-docker rmi -f $IMAGE_NAME
-docker login $REGISTRY_URL -u $BUILD_USER -p $BUILD_PASSWORD
-docker pull $IMAGE
-docker image tag $REGISTRY_URL$REGISTRY_PATH:$IMAGE_TAG $IMAGE_NAME
+# sequelize-cli db migration
 
-if [ $? -eq 0 ];then
-  echo "Build Success!"
-
-  bun dotenv -e .env.staging -- sequelize-cli db:migrate
-  docker save $IMAGE_NAME | gzip > deploy/$IMAGE_NAME.tgz
-
-  scp ./deploy/$IMAGE_NAME.tgz @@:~/@@@@/web/
-else
-  echo "Build Failure!"
-  exit 9
-fi
+# zip image and send by using scp
 ```
 
 <br>
@@ -174,30 +117,18 @@ fi
   - docker run에 실행 시 필요한 환경 변수를 지정해야한다!!
 - **prod도 staging과 유사하지만 network를 host로 지정하는 것에 유의!**
 
+내가 직접 짠 스크립트이지만, 아무래도 회사에 있는 코드이기 때문에 주석만 남기려고 한다.
+
 ```bash
-NETWORK=
-CONTAINER=@@@@@@-web
+# config
 
-NEW_TAG=staging-current
-OLD_TAG=staging-old
-IMAGE=@@@@@@-web:$NEW_TAG
-PORT=80
+# remove old image
 
-docker rmi -f @@@@@@-web:$OLD_TAG
-docker image tag $IMAGE @@@@@@-web:$OLD_TAG
-docker load -i $IMAGE.tgz
+# rename current image to old image
 
-if [ $(docker images -q -f reference=$IMAGE) ];then
-  docker rm -f $CONTAINER
+# load new current image
 
-  echo "$CONTAINER is stoped!"
-
-  docker run -d \
-  --env-file .env.staging \
-  --network $NETWORK \
-  --name $CONTAINER \
-  -p $PORT:3000 $IMAGE
-fi
+# docker run!
 ```
 
 - docker images
